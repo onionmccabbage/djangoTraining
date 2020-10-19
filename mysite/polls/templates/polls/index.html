@@ -1,0 +1,22 @@
+<!-- type ! then press tab to get a default web page -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to the Polls App Home Page</title>
+</head>
+<body>
+    <!-- our Django template content goes here (using interpolation)  -->
+    {% if latest_question_list %}
+    <ul>
+    <!-- here we iterate over the model data -->
+    {% for question in latest_question_list %}
+        <li>{{ question.question_text }}</li>
+    {% endfor %}
+    </ul>
+    {% else %}
+    <h3>There are no questions yet</h3>
+    {% endif  %}
+</body>
+</html>
