@@ -1,0 +1,12 @@
+/* tag styles */
+footer {
+    background-color: black;
+    color: antiquewhite;
+    font-family: 'Courier New', Courier, monospace;
+}
+body {font-size: larger;}
+
+/* class styles */
+.highlight {background-color: yellow;}
+/* id styles */
+#unique {color:teal;}

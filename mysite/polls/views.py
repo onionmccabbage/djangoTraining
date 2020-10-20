@@ -1,7 +1,9 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 # Create your views here.
-from .models import Question
+from .models import  Question # als oneed to import Choice
+# we will need a reverse URL lookup
+from django.urls import reverse
 
 # it's a good idea to pass sensible defaults to views
 def index(request): # by convention the home page is called index
@@ -25,7 +27,15 @@ def results(request, question_id=1):
     return HttpResponse('Results for question {}'.format(question_id) )
 
 def vote(request, question_id=1):
-    return HttpResponse('Here you can vote on question {}'.format(question_id) )
+    # return HttpResponse('Here you can vote on question {}'.format(question_id) )
+    question = get_object_or_404(Question, pk=question_id)
+    try:
+        selected_choice = question.choice_set.get(pk=request.POST['choice'])
+    except (KeyError, ChoiceDoesNotExist):
+        # display an error message
+        return render(request, 'polls/detail.html', 
+            {'question':question, 'error_message':'Invalid choice'})
+    else:
 
 
 

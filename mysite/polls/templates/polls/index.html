@@ -7,20 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome to the Polls App Home Page</title>
     <!-- we can link to style sheets -->
-    <link href="polls/templates/polls/styles/polls.css" type="text/css" />
-    <style>
-        /* tag styles */
-        footer {
-            background-color: black;
-            color: antiquewhite;
-            font-family: 'Courier New', Courier, monospace;
-        }
-        body {font-size: larger;}
+    <!-- <link href="polls/templates/polls/styles/polls.css" type="text/css" /> -->
+    <!-- load static enables us to use static assets in this template -->
+    {% load static %} 
+    <link rel='stylesheet' href='{% static "polls/polls.css" %}' type='text/css' />
 
-        /* class styles */
-        .highlight {background-color: yellow;}
-        /* id styles */
-    </style>
 </head>
 
 <body>
@@ -49,7 +40,7 @@
         {% endif  %}
     </article>
     <footer>
-        &copy;2020 read our legal notice
+        &copy;2020 read our <span id='unique'>legal notice</span>
     </footer>
 </body>
 
