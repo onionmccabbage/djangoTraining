@@ -47,8 +47,8 @@ def vote(request, question_id):
         return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
 
 
-
-
+def demo_form(request):
+    return render(request, 'polls/demo_form.html' )
 
 def weather(request):
     return HttpResponse('This is the Weather page')
