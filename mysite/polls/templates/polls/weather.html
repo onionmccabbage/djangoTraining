@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Reports</title>
+    {% load static %} 
+    <link rel='stylesheet' href='{% static "polls/polls.css" %}' type='text/css' />
+
+</head>
+<body>
+    <h2>Weather Reports</h2>
+    {% if weather_list %}
+        <ul>
+            {% for weather in weather_list %}
+                <li><a href="{% url 'polls:weather_form' weather.id %}">{{ weather.city }} {{weather.country}} {{weather.temperature}}</a></li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <h3>There are no weather reports yet</h3>
+        {% endif  %}
+</body>
+</html>

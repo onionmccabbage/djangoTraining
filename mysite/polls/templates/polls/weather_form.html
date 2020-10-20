@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Form</title>
+    {% load static %} 
+    <link rel='stylesheet' href='{% static "polls/polls.css" %}' type='text/css' />
+
+</head>
+
+<body>
+    <section>
+        <h3>Weather Form for {{weather_id}}</h3>
+        {% if error_message %}
+        <aside>
+            <p><strong>{{ error_message}}</strong></p>
+        </aside>
+        {% endif %}
+        <form action='{% url "polls:weather_form" weather.id %}' method="POST">
+            {% csrf_token %}
+            Country:
+            <select  name='country' id='country'>
+                <option selected value='{{weather.country}}'>{{weather.country}}</option>
+                <option value='uk'>United Kingdom</option>
+                <option value='ie'>Ireland</option>
+                <option value='aus'>Australia</option>
+                <option value='usa'>USA</option>
+            </select>
+            <br />
+            City:
+            <input type="text" placeholder="enter city name" required id='city' name='city' value="{{weather.city}}" />
+            <br />
+            Description:
+            <textarea id='description' name='description'>{{weather.description}}</textarea>
+        <br/>
+        Temperature:
+        <input type="number" value='{{weather.temperature}}' name='temperature' id='temperature' />
+        <br/>
+        <!-- a hidden field to make sure we pas the ID for this weather report -->
+        <input type='hidden' value='{{weather.id}}' id='id' name='id'/>
+        <input type='submit' value='save changes' />
+    </form>
+</section>
+</body>
+</html>

@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- we can interpolate values - careful, Django works INSIDE comments -->
     <title>Details for Question {{question.id}}</title>
+    {% load static %} 
+    <link rel='stylesheet' href='{% static "polls/polls.css" %}' type='text/css' />
 </head>
 <body>
     <h2>Details for Question {{ question.id }}</h2>
@@ -16,7 +18,7 @@
         <!-- it's a good idea to have somewhere to show error messages -->
         {% if error_message %}
             <aside>
-                <p><strong>{{ error_message}}</strong></p>
+                <p><strong class='highlight'>{{ error_message}}</strong></p>
             </aside>
         {% endif %}
 

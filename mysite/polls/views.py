@@ -1,7 +1,8 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 # Create your views here.
-from .models import  Question # als oneed to import Choice
+from .models import Question # also need to import Choice
+from .models import Weather
 # we will need a reverse URL lookup
 from django.urls import reverse
 
@@ -51,4 +52,26 @@ def demo_form(request):
     return render(request, 'polls/demo_form.html' )
 
 def weather(request):
-    return HttpResponse('This is the Weather page')
+    weather_list = Weather.objects.order_by('city') 
+    context = {'weather_list': weather_list}
+    return render(request, 'polls/weather.html', context)
+
+def weather_form(request, weather_id):
+    # is it GET or POST?
+    if request.method =='POST':
+        # the form has been submitted, so save the changes and then show the 'weather' view
+        selected_weather = get_object_or_404(Weather, pk=request.POST['id'])
+        selected_weather.country = request.POST['country']
+        selected_weather.city = request.POST['city']
+        selected_weather.description = request.POST['description']
+        selected_weather.temperature = request.POST['temperature']
+        selected_weather.save()
+        weather_list = Weather.objects.order_by('city') 
+        context = {'weather_list': weather_list}
+        return render(request, 'polls/weather.html', context)
+    else:
+        # for form has NOT yet been submitted - just show the weather_form view
+        weather = get_object_or_404(Weather, pk=weather_id)
+        context = {'weather':weather}
+        return render(request, 'polls/weather_form.html', context)
+

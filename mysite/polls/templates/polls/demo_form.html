@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Example Form</title>
+    {% load static %} 
+    <link rel='stylesheet' href='{% static "polls/polls.css" %}' type='text/css' />
+
 </head>
 <body>
     <!-- sample HTML form with various field types -->
@@ -22,7 +25,7 @@
             <option value='0'>Salad</option>
             <option value='1'>Soup</option>
             <option value='3'>Cake</option>
-            <option value='4'>Fruit</option>
+            <option selected value='4'>Fruit</option>
             <option value='5'>Other</option>
         </select>
         <br/>
