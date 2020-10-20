@@ -36,6 +36,7 @@ def vote(request, question_id=1):
         return render(request, 'polls/detail.html', 
             {'question':question, 'error_message':'Invalid choice'})
     else:
+        pass
 
 
 

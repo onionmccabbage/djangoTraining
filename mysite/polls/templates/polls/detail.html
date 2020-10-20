@@ -22,7 +22,7 @@
 
         <!-- we can declare a form for the user to place their vote -->
         <form action='{% url "polls:vote" question.id %}' method="POST">
-            <!-- we must protect against cross-site reuest forgeries -->
+            <!-- we must protect against cross-site request forgeries -->
             {% csrf_token %}
         <!-- iterate over the choices -->
             {% for choice in question.choice_set.all %}
