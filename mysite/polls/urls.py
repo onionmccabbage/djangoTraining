@@ -2,8 +2,9 @@
 from django.urls import path
 from . import views # i.e. from current location
 
+# we can create a namespace for our app 
+app_name = 'polls' #(so we can say 'polls:detail' rather than just 'detail')
 # declare the patterns we will respond to
-
 urlpatterns = [
     path('', views.index, name='index'), # our first routing path
     path('weather/', views.weather, name='weather'),

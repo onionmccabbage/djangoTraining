@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 # Create your views here.
 from .models import  Question # als oneed to import Choice
 # we will need a reverse URL lookup
@@ -24,7 +24,9 @@ def detail(request, question_id=1): # we can pass a parameter as 'question_id'
     # return HttpResponse("Here's detals of question {}".format(question_id) ) # we can pass parameters
 
 def results(request, question_id=1):
-    return HttpResponse('Results for question {}'.format(question_id) )
+    # return HttpResponse('Results for question {}'.format(question_id) )
+    question = get_object_or_404(Question, pk=question_id)
+    return render(request, 'polls/results.html', {'question':question})
 
 def vote(request, question_id=1):
     # return HttpResponse('Here you can vote on question {}'.format(question_id) )
@@ -36,8 +38,14 @@ def vote(request, question_id=1):
         return render(request, 'polls/detail.html', 
             {'question':question, 'error_message':'Invalid choice'})
     else:
-        pass
-
+        # commit the changes then send to the 'result' view
+        selected_choice.votes += 1
+        selected_choice.save()
+        # we must always return an HttpResponse or HttpResponseRedirect
+    return HttpResponseRedirect( 
+            reverse('polls:results'), # lookup where the 'results' URL goes
+            args=(question.id) # add in the unique identifier for this question
+        )
 
 
 
