@@ -6,15 +6,8 @@ from . import views # i.e. from current location
 app_name = 'polls' #(so we can say 'polls:detail' rather than just 'detail')
 # declare the patterns we will respond to
 urlpatterns = [
-    path('', views.index, name='index'), # our first routing path
-    # ex /polls/5/ NB all URL values are STRING so we cast as int where needed
-    path('<int:question_id>/', views.detail, name='detail'), # <> allow for a parameter
-    # ex /polls/5/results
-    path('<int:question_id>/results/', views.results, name='results'),
-    # ex /polls/5/vote
-    path('<int:question_id>/vote/', views.vote, name='vote'),
-    path('demo_form/', views.demo_form, name='DemoForm'),
-    # review 'weather'
-    path('weather/', views.weather, name='weather'),
-    path('<int:weather_id>/weather_form/', views.weather_form, name='weather_form')
+    path( '', views.IndexView.as_view(), name='index' ), # here we use generic views i.e. classes cast as views
+    path( '<int:pk>/', views.DetailView.as_view(), name='detail'),
+    path( '<int:pk>/results/', views.ResultsView.as_view(), name='results'),
+    path( '<int:question_id>/vote/', views.vote, name='vote' ) # NB vote is never actually visible
 ]
