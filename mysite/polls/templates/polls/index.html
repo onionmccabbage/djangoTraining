@@ -10,7 +10,6 @@
     <!-- load static enables us to use static assets in this template -->
     {% load static %} 
     <link rel='stylesheet' href='{% static "polls/polls.css" %}' type='text/css' />
-
 </head>
 
 <body>
@@ -39,9 +38,34 @@
         <h3>There are no questions yet</h3>
         {% endif  %}
     </article>
+    <aside>
+        <button id='btnCookies'>Agree to cookies</button>
+    </aside>
     <footer>
         &copy;2020 read our <span id='unique'>legal notice</span>
     </footer>
 </body>
+<!-- we can declare a script -->
+<script>
+// JavaScript is the ONLY client-side code we EVER write
 
+// declare functions
+const handleClick = ()=>{ // modern JavaScript functions use 'arrow' syntax
+    event.target.removeEventListener('click', handleClick) // first remove any event listeners
+    event.target.setAttribute('style', 'display:none')
+}
+
+// we can handle cookie permission
+btn = document.getElementById('btnCookies')
+btn.addEventListener('click', handleClick)
+
+// we can 'poll' or 'heartbeat' to auto-submit fresh data points
+// use setInterval
+const newData = ()=>{
+    console.log( new Date() ) // Date() is a timestamp
+}
+//          function TO CALL, not the actual call
+setInterval(newData, 1000) // 1000 milliseconds
+
+</script>
 </html>
