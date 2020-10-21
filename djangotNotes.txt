@@ -1,0 +1,62 @@
+Django
+======
+
+October 19-21
+Toby Dussek
+
+Monday
+> welcome
+> profile forms
+> overview of Django
+> set-up and create a project and an app
+> configure settings
+> create a view and specify urls.py
+> Models and Databases 
+> models.py
+> field types
+> migrations
+> create an admin super user 
+> configuring the admin site to expose custom models
+> after lunch review exercise
+> basics of HTML, CSS and JavaScript
+> why we can default without an explicit HttpRequest
+> templates and static media
+> passing URL parameters
+
+Tuesday
+> acessing static resources (e.g. styles)
+> html forms: GET and POST, also form action
+> cross-site request forgery csrf prevention
+> form field types
+> updates to the model 
+> updates to the admin app for model pages
+> using views, model data and templates
+> master and detail templates
+> parameterised URL mapping
+> after lunch review exercise
+> iterations within templates
+
+Wednesday
+> see an example where we work with the Django data within the JavaScript
+> Django 'batteres included' approach
+> basic Django workflows: 
+  > creating project/apps
+  > creating templates
+  > defining models/db
+  > running the dev server
+> generating custom admin forms
+> specifics of HTML form fields and how to handle them
+> mini exercise
+  > form fields for category and number e.g. post/3
+  > when button is clicked DO NOT SUBMT THE FORM
+  > instead, make a FETCH request with these data
+  > show the result in the page
+> after lunch review exercise
+- creating and using custom template tags for templates that inherit
+- overview of testing
+- cleaning data
+- data sanitization
+- security
+- end of course feedback
+- all my code available here https://github.com/onionmccabbage/djangoTraining
+

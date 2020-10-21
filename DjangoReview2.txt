@@ -1,0 +1,24 @@
+Django Review 2 see https://controlc.com/f873c5d1
+=============== until 2:50 ish
+Alter your 'weather' route so it shows a list of existing weather reports
+(in much the same way 'index' shows a list of questions)
+You will need to manually add a few weather reports via the admin interface
+
+Then create a route to 'weather_form' (view, url and template) to allow users to edit existing weather reports
+In the form, provide 'country' as a drop-down field with a few countries to choose from
+
+Details
+========
+Your 'weather' view will need to provide links to the 'weather_form' view, passing a context dictionary
+Your 'weather_form' then uses this context dictionary to populate the values of the form fields
+The 'temperature' field should be type='number'
+(NB this is NOT as complex as the 'votes' system)
+
+Optional
+========
+When the user submits the form, save the changes and show the 'weather' view
+Add the SAME style-sheet to all your html templates
+Apply the .highlight css class style to any error_messages
+Find a way to store the countries as a data model, then bind these model values to the options on the form
+(NB Django has a widget for this)
+Consider how you could make a form for entering new weather reports (rather than using the admin interface)

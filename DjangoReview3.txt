@@ -1,0 +1,36 @@
+Django Review Exercise 3 see https://controlc.com/5985d693
+========================
+You will add automatic weather retrieval to the 'weather_form' template
+This will use the free weather API available here:
+  http://api.openweathermap.org/data/2.5/weather?q=athlone,ie&APPID=48f2d5e18b0d2bc50519b58cce6409f1&units=metric
+
+(replace athlone,ie with the city and country values provided by the user)
+
+Use JavaScript string interpolation to build a URL, e.g.
+    let weatherStub  = 'http://api.openweathermap.org/data/2.5/weather?q='
+    let weatherAPPID = '&APPID=48f2d5e18b0d2bc50519b58cce6409f1'
+    let units = '&units=metric'
+    let weatherURL = `${weatherStub}${chosen_city},${chosen_country}${weatherAPPID}${units}`
+
+Provide a button OUTSIDE the existing form. Add an event listener to this button
+In the event listener call-back function, grab the values for 'city' and 'country' from the original form
+then concaternate them into a URL (see suggestion above) and use 'fetch' to make a call to the openweathermap API
+(Why is it so important for this new button to be OUTSIDE the 'form' tag?)
+
+When the data comes back, populate the 'temperature' and 'description' fields in the original form, e.g.
+    temperature.value = data.main.temp
+    description.value = data.weather[0]['description']
+(You will need to use 'document.getElementById(...)' before doing this)
+
+Optional
+========
+The returned weather report from openweathermap includes wind speed and direction
+- add fields to the 'weather' model for wind speed and for wind direction
+- implement these changes via migrations
+- add fields for wind speed and for wind direction to the original form
+- make changes to your views so the new data members (wind speed and wind direction) get committed to the database
+Choose other data members (e.g. lat and lon) to add to your persitant data set
+You may want to add more countries to the 'select' field, either manually or from a new Django model of 'countries'
+Try adding validation to the 'city' form field, to ensure it is a string of at least 3 characters
+See the API documentation and find a way to return the temperature in Kelvin (i.e. standard format) or F (imperial)
+  https://openweathermap.org/current#data

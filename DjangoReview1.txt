@@ -1,0 +1,23 @@
+Django Review Exercise 1 (see https://controlc.com/044f775b )
+======================== until 2:00 ish
+Open 'polls/models.py' and declare a model for 'weather'
+This should include 'city', 'country' and 'description' as character fields
+Also include 'temperature' as a FloatField (with a sensible default value)
+Write a new __str__ method for this data model, which returns the city, description and temperature
+
+Make migrations and migrate
+
+Open 'polls/admin.py' and import your Weather model
+Register your Weather model with the admin site (exactly as for 'Question')
+
+Open the admin site and add a couple of weather reports
+(Notice that new 'Weather' instances use your __str__ in the Admin interface)
+
+Open 'polls/views.py' and declare a view called 'weather'
+Return some basic static content for this view (We do not yet use our models)
+Open 'polls/urls.py' and add a path 'polls/weather/' which leads to this new view
+Check your view content gets rendered in the browser when you navigate to 127.0.0.1:8000/polls/weather/
+
+
+
+
