@@ -40,6 +40,12 @@
     </article>
     <aside>
         <button id='btnCookies'>Agree to cookies</button>
+        <br/>
+        <img id='my_image' src='http://placekitten.com/240/120' />
+        <br/>
+        w: <input type='range' min='12' max='640' step='10' id='width' />
+        <br/>
+        h: <input type='range' min='12' max='640' step='10' id='height' />
     </aside>
     <footer>
         &copy;2020 read our <span id='unique'>legal notice</span>
@@ -48,6 +54,29 @@
 <!-- we can declare a script -->
 <script>
 // JavaScript is the ONLY client-side code we EVER write
+// code to control the image
+let my_image = document.getElementById('my_image')
+let width = document.getElementById('width')
+let height = document.getElementById('height')
+
+const adjustImage = ()=>{ // similar to old-skool function adjustImage(){}
+    new_w = width.value
+    new_h = height.value
+    new_src = `http://placekitten.com/${new_w}/${new_h}` // string interpolation
+    // console.log(new_src)
+    my_image.setAttribute('src', new_src)
+} 
+width.addEventListener('change', adjustImage)
+height.addEventListener('change', adjustImage)
+
+
+// we can access any data from Django
+// but ONLY at the point it is injected into the page
+// i.e. at page creation
+// (there is no Python or Django running in a browser!)
+let latest_list = "{{latest_question_list}}" // quotes since it is serialized
+console.log(latest_list)
+
 
 // declare functions
 const handleClick = ()=>{ // modern JavaScript functions use 'arrow' syntax
@@ -61,11 +90,11 @@ btn.addEventListener('click', handleClick)
 
 // we can 'poll' or 'heartbeat' to auto-submit fresh data points
 // use setInterval
-const newData = ()=>{
+const newData = ()=>{ // 'latest' is accesing the Django data injected into the page
     console.log( new Date() ) // Date() is a timestamp
 }
 //          function TO CALL, not the actual call
-setInterval(newData, 1000) // 1000 milliseconds
+// setInterval(newData, 1000) // 1000 milliseconds
 
 </script>
 </html>
