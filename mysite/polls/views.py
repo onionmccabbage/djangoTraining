@@ -16,6 +16,14 @@ class IndexView(generic.ListView): # we are going to list data members!
         '''return the last three published questions'''
         return Question.objects.order_by('-pub_date')[:3]
 
+# view for an inherited template (this replicates the 'index' page)
+class ChildView(generic.ListView): 
+    template_name = 'polls/child.html'
+    context_object_name = 'latest_question_list' 
+    def get_queryset(self):
+        '''return all the questions'''
+        return Question.objects.order_by('-pub_date')
+
 class DetailView(generic.DetailView): # this is a detail page!
     model = Question
     template_name = 'polls/detail.html'
@@ -61,6 +69,8 @@ def weather_form(request, weather_id):
         selected_weather.city = request.POST['city']
         selected_weather.description = request.POST['description']
         selected_weather.temperature = request.POST['temperature']
+        selected_weather.wind_speed = request.POST['wind_speed']
+        selected_weather.wind_direction = request.POST['wind_direction']
         selected_weather.save()
         weather_list = Weather.objects.order_by('city') 
         context = {'weather_list': weather_list}

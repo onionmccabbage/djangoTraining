@@ -8,5 +8,10 @@ body {font-size: larger;}
 
 /* class styles */
 .highlight {background-color: yellow;}
+.city {font-weight:bolder;}
+.country {font-style: italic;}
+.desc, .speed {font-weight: bold;}
+.temp, .dir {font-style: italic;}
+
 /* id styles */
 #unique {color:teal;}

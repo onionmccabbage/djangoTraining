@@ -1,22 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="stylesheet" href="style.css">
-    <title>{% block title %}My amazing site{% endblock %}</title>
+    {% load static %} 
+    <link rel='stylesheet' href='{% static "polls/polls.css" %}' type='text/css' /> 
+    <title>{% block title %}My site{% endblock %}</title>
 </head>
 
 <body>
-    <div id="sidebar">
-        {% block sidebar %}
-        <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/blog/">Blog</a></li>
-        </ul>
+    <nav id="navbar">
+        {% block navbar %}
+            <a href='https://djangoproject.com'>Django Docs</a> |
+            <a href='https://djangogirls.orgs'>Django Tutorials</a> |
+            <a href='https://www.w3schools.com/Css/'>CSS Tutorial</a> |
+            <a href='weather/'>Review Exercise Solutions</a>|
+            <a href='child/'>A Child View (using template inheritance)</a>
         {% endblock %}
-    </div>
+    </nav>
 
-    <div id="content">
+    <article id="content">
         {% block content %}{% endblock %}
-    </div>
+    </article>
+    <footer>
+        &copy;2020 read our <span id='unique'>legal notice</span>
+    </footer>
 </body>
 </html>

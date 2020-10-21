@@ -26,6 +26,8 @@ class Weather(models.Model):
     country = models.CharField(max_length=200)
     description = models.CharField(max_length=200)
     temperature = models.FloatField(default=22)
+    wind_speed = models.FloatField(default=0)
+    wind_direction = models.IntegerField(default=0)
     def __str__(self):
-        report_str = "{}: {} {}".format(self.city, self.description, self.temperature)
+        report_str = "{}: {} {} {} {}".format(self.city, self.description, self.temperature, self.wind_speed, self.wind_direction)
         return report_str

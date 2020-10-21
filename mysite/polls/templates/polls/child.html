@@ -1,0 +1,20 @@
+{% extends "polls/base.html" %}
+
+{% block title %}My child page{% endblock %}
+
+{% block content %}
+    <h2>Template Inheritance</h2>
+    <p>This template inherits from 'base'</p>
+    {% if latest_question_list %}
+    <ul>
+        <!-- here we iterate over the model data -->
+        {% for question in latest_question_list %}
+        <!-- we can use the 'a' tag to make hyperlinks -->
+        <!-- NB we can use 'url' to derive the exact URL and avoid hard coding it -->
+        <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <h3>There are no questions yet</h3>
+    {% endif  %}
+{% endblock %}
