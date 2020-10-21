@@ -9,5 +9,8 @@ urlpatterns = [
     path( '', views.IndexView.as_view(), name='index' ), # here we use generic views i.e. classes cast as views
     path( '<int:pk>/', views.DetailView.as_view(), name='detail'),
     path( '<int:pk>/results/', views.ResultsView.as_view(), name='results'),
-    path( '<int:question_id>/vote/', views.vote, name='vote' ) # NB vote is never actually visible
+    path( '<int:question_id>/vote/', views.vote, name='vote' ), # NB vote is never actually visible
+    # review 'weather'
+    path('weather/', views.weather, name='weather'),
+    path('<int:weather_id>/weather_form/', views.weather_form, name='weather_form')
 ]

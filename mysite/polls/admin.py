@@ -6,7 +6,7 @@ from .models import Weather
 from .models import Choice
 
 # delare a class to 'inline' the choices along with the question
-class ChoiceInline(admin.StackedInline):
+class ChoiceInline(admin.TabularInline): # or StackedInline
     model = Choice
     # we can choose how many to show by default
     extra = 3
@@ -21,6 +21,7 @@ class QuestionAdmin(admin.ModelAdmin):
                 ('Date info', {'fields':['pub_date'], 'classes':['collapse']}),
                ]
     inlines = [ChoiceInline]
+    list_display = ('question_text', 'pub_date', 'was_published_recently')
 
 
 admin.site.register(Question, QuestionAdmin) # register our admin class
