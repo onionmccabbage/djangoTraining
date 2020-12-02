@@ -52,11 +52,11 @@ Wednesday
   > instead, make a FETCH request with these data
   > show the result in the page
 > after lunch review exercise
-- creating and using custom template tags for templates that inherit
+> creating and using custom template tags for templates that inherit
 - overview of testing
 - cleaning data
 - data sanitization
 - security
-- end of course feedback
+- end of course feedback 
 - all my code available here https://github.com/onionmccabbage/djangoTraining
 
